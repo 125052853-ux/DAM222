@@ -3,6 +3,7 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
+
 let pedidos = [
     {
         producto: "Pizza",
@@ -24,11 +25,16 @@ let pedidos = [
 function listarPedidos() {
     console.log("");
     console.log(" PEDIDOS ");
-    pedidos.forEach(function(pedido) {
-        console.log(
-            `${pedido.producto} x${pedido.cantidad} = $${pedido.total}`
-        );
-    });
+    if (pedidos.length == 0){
+        console.log("no hay pedidos");
+    }else {
+        pedidos.forEach(function(pedido) {
+            console.log(
+                `${pedido.producto} x${pedido.cantidad} = $${pedido.total}`
+            );
+            console.log("")
+        });
+    }
 }
 
 function calcularSubtotal() {
