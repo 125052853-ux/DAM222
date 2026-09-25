@@ -8,17 +8,20 @@ let pedidos = [
     {
         producto: "Pizza",
         cantidad: 2,
-        total: 240
+        total: 240,
+        estado: "Preparando"
     },
     {
         producto: "Hamburguesa",
         cantidad: 1,
-        total: 80
+        total: 80,
+        estado: "Preparando"
     },
     {
         producto: "Refresco",
         cantidad: 2,
-        total: 60
+        total: 60,
+        estado: "Preparando"
     }
 ];
 
@@ -32,7 +35,7 @@ function listarPedidos() {
             console.log(
                 `${pedido.producto} x${pedido.cantidad} = $${pedido.total}`
             );
-            console.log("")
+            console.log("Estado:", pedido.estado);
         });
     }
 }
@@ -52,7 +55,7 @@ function calcularIVA() {
 
 function calcularTotal() {
     let subtotal = calcularSubtotal();
-    let iva = subtotal * 0.16;
+    let iva = calcularIVA;
     let total = subtotal + iva;
     return total;
 }
@@ -62,6 +65,10 @@ function mostrarResumen() {
     console.log("");
     console.log(" RESUMENe DE CAJA");
     console.log("");
+    if(pedidos.length == 0){
+        console.log("No hay pedidos.");
+    }else{
+    
     pedidos.forEach(function(pedido) {
         let {
             producto,
@@ -83,6 +90,44 @@ function mostrarResumen() {
     console.log(`Total: $${total.toFixed(2)}`);
     console.log("");
 }
+}
+function notificarCaja(mensaje, callback){
+    console.log("");
+    console.log("Procesando notificacion...");
+    setTimeout(function(){
+        callback(mensaje);
+    }, 2000);
+}
+
+function pedidoListo() {
+    notificarCaja("Pedido listo para entregar.", function(mensaje) {
+        console.log("");
+        console.log("CAJA:");
+        console.log(mensaje);
+    });
+}
+
+function pedidoCancelado() {
+    notificarCaja("Pedido cancelado.", function(mensaje) {
+        console.log("");
+        console.log("CAJA:");
+        console.log(mensaje);
+    });
+}
+
+async function simularNotificacion() {
+    let opcion = await rl.question(
+        "\n¿Que notificación quieres enviar? (1 = Listo, 2 = Cancelado): "
+    );
+    if (opcion == "1") {
+        pedidoListo();
+    } else if (opcion == "2") {
+        pedidoCancelado();
+    } else {
+        console.log("Opción no válida.");
+    }
+}
+
 async function menu() {
     let opcion;
     do {
