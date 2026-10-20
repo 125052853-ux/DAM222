@@ -10,11 +10,11 @@ export default function App() {
   return (
     <View style={styles.container}>
     
-      <Perfil nombre="Antonio" carrera="ITIID" cuatrimestre="4" materia="Movil"/>
+      <Perfil style={styles.tarjeta1} nombre="Antonio" carrera="ITIID" cuatrimestre="4" materia="Movil"/>
 
-      <Perfil nombre="Uriel" carrera="ITIID" cuatrimestre="4" materia="Movil"/>
+      <Perfil style={styles.tarjeta2} nombre="Uriel" carrera="ITIID" cuatrimestre="4" materia="Movil"/>
 
-      <Perfil nombre="Cesar" carrera="ITIID" cuatrimestre="4" materia="Movil"/>
+      <Perfil style={styles.tarjeta3} nombre="Cesar" carrera="ITIID" cuatrimestre="4" materia="Movil"/>
       
       <StatusBar style="auto" />
     </View>
@@ -27,6 +27,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
   },
+  tarjeta1:{backgroundColor:'blue'},
+  tarjeta2:{backgroundColor:'orange'},
+  tarjeta3:{backgroundColor:'green'},
 });
