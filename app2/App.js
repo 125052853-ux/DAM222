@@ -1,28 +1,18 @@
-/*1.- Zona de importaciones */
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import MenuScreen from './screens/MenuScreen';
+import { TextInput, View } from "react-native";
 
+export default function App(){
+  const [texto, setTexto] = useState ('');
 
-/*2.- Zona main */
-export default function App() {
   return (
 
-    <MenuScreen></MenuScreen>
-
-  );
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="NOMBRE"
+        value={texto}
+        onChange={(text) => setTexto(text)}
+        />
+        <Text style={styles.resultado}></Text>
+    </View>
+  )
 }
-
-/*3.- Zona Estilos & Posicionamiento */
-const styles = StyleSheet.create({
-  container: {
-    flexDirection:'column',
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  tarjeta1:{backgroundColor:'blue'},
-  tarjeta2:{backgroundColor:'orange'},
-  tarjeta3:{backgroundColor:'green'},
-});
