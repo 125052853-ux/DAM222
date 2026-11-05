@@ -5,7 +5,8 @@ import {useState} from 'react';
 import Tarjetas from './Tarjetas';
 import SafeScreen from './SafeScreen';
 import PressableSwitch from './PressableSwitch';
-
+import SectionListScreen from './SectionListScreen';
+import ImageBackgroundScreen from './ImageBackgroundScreen';
 
 /*2.- Zona main */
 export default function MenuScreen() {
@@ -15,10 +16,19 @@ export default function MenuScreen() {
     switch(screen){
         case 'tarjetas':
             return <Tarjetas/>
+
         case 'safescreen':
             return <SafeScreen/>
+
         case 'pressable':
-      return <PressableSwitch />;
+      return <PressableSwitch />
+
+        case 'flatlist':
+          return <SectionListScreen/>
+
+        case 'imagebackground':
+          return <ImageBackgroundScreen/>
+
         case 'menu':
             default:
                 return (
